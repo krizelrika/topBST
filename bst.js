@@ -17,3 +17,28 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
   }
 };
 
+class Tree {
+  constructor(array = []) {
+    // build a balanced BST from the supplied array (sort + remove duplicates)
+    this.root = this.buildTree(array);
+  }
+
+  // Build balanced BST from array: sort, deduplicate, then recursive mid split
+  buildTree(array) {
+    if (!Array.isArray(array)) return null;
+    // create a sorted unique array
+    const sortedUnique = Array.from(new Set(array)).sort((a, b) => a - b);
+    // recursive helper
+    const build = (arr, start = 0, end = arr.length - 1) => {
+      if (start > end) return null;
+      const mid = Math.floor((start + end) / 2);
+      const node = new Node(arr[mid]);
+      node.left = build(arr, start, mid - 1);
+      node.right = build(arr, mid + 1, end);
+      return node;
+    };
+    return build(sortedUnique, 0, sortedUnique.length - 1);
+  }
+
+}
+
