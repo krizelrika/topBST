@@ -46,5 +46,23 @@ class Tree {
     while (node.left) node = node.left;
     return node;
   }
+
+  // Insert a value into the BST (ignore duplicates)
+  insert(value) {
+    if (value === undefined || value === null) return;
+    const insertRec = (node, val) => {
+      if (!node) return new Node(val);
+      if (val === node.data) {
+        // duplicate — ignore (spec asks to avoid duplicates)
+        return node;
+      } else if (val < node.data) {
+        node.left = insertRec(node.left, val);
+      } else {
+        node.right = insertRec(node.right, val);
+      }
+      return node;
+    };
+    this.root = insertRec(this.root, value);
+  }
 }
 
