@@ -40,5 +40,11 @@ class Tree {
     return build(sortedUnique, 0, sortedUnique.length - 1);
   }
 
+  // Helper to find the in-order successor (minimum node in right subtree)
+  _minNode(node) {
+    if (!node) return null;
+    while (node.left) node = node.left;
+    return node;
+  }
 }
 
