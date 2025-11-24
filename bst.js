@@ -93,5 +93,15 @@ class Tree {
     return true;
   }
 
+  // Find and return the node containing the value; return null if not found
+  find(value) {
+    let current = this.root;
+    while (current) {
+      if (value === current.data) return current;
+      current = value < current.data ? current.left : current.right;
+    }
+    return null;
+  }
+
 }
 
