@@ -132,5 +132,20 @@ class Tree {
     traverse(this.root);
   }
 
+  // Pre-order traversal (root, left, right)
+  preOrderForEach(callback) {
+    if (typeof callback !== 'function') {
+      throw new Error('preOrderForEach requires a callback function as argument');
+    }
+    const traverse = (node) => {
+      if (!node) return;
+      callback(node);
+      traverse(node.left);
+      traverse(node.right);
+    };
+    traverse(this.root);
+  }
+
+
 }
 
