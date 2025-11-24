@@ -118,5 +118,19 @@ class Tree {
     }
   }
 
+   // In-order traversal (left, root, right)
+  inOrderForEach(callback) {
+    if (typeof callback !== 'function') {
+      throw new Error('inOrderForEach requires a callback function as argument');
+    }
+    const traverse = (node) => {
+      if (!node) return;
+      traverse(node.left);
+      callback(node);
+      traverse(node.right);
+    };
+    traverse(this.root);
+  }
+
 }
 
