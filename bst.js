@@ -103,5 +103,20 @@ class Tree {
     return null;
   }
 
+  // Level-order traversal (breadth-first). callback(node) required.
+  levelOrderForEach(callback) {
+    if (typeof callback !== 'function') {
+      throw new Error('levelOrderForEach requires a callback function as argument');
+    }
+    const queue = [];
+    if (this.root) queue.push(this.root);
+    while (queue.length > 0) {
+      const node = queue.shift();
+      callback(node);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+  }
+
 }
 
