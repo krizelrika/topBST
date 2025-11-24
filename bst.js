@@ -64,5 +64,34 @@ class Tree {
     };
     this.root = insertRec(this.root, value);
   }
+
+  deleteItem(value) {
+    const deleteRec = (node, val) => {
+      if (!node) return null;
+      if (val < node.data) {
+        node.left = deleteRec(node.left, val);
+      } else if (val > node.data) {
+        node.right = deleteRec(node.right, val);
+      } else {
+        // node to delete found
+        // case 1: no child
+        if (!node.left && !node.right) return null;
+        // case 2: one child
+        if (!node.left) return node.right;
+        if (!node.right) return node.left;
+        // case 3: two children -> replace with successor (smallest in right subtree)
+        const successor = this._minNode(node.right);
+        node.data = successor.data;
+        node.right = deleteRec(node.right, successor.data);
+      }
+      return node;
+    };
+
+    // check presence first -> if not present, return false
+    if (this.find(value) === null) return false;
+    this.root = deleteRec(this.root, value);
+    return true;
+  }
+
 }
 
