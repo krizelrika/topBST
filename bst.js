@@ -146,6 +146,19 @@ class Tree {
     traverse(this.root);
   }
 
+  // Post-order traversal (left, right, root)
+  postOrderForEach(callback) {
+    if (typeof callback !== 'function') {
+      throw new Error('postOrderForEach requires a callback function as argument');
+    }
+    const traverse = (node) => {
+      if (!node) return;
+      traverse(node.left);
+      traverse(node.right);
+      callback(node);
+    };
+    traverse(this.root);
+  }
 
 }
 
