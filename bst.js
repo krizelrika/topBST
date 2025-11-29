@@ -212,3 +212,5 @@ class Tree {
 
 }
 
+export { Node, Tree, prettyPrint };
+
