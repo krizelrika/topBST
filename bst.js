@@ -187,5 +187,28 @@ class Tree {
     return null;
   }
 
+  // isBalanced: check every node for balance property
+  // Efficient approach: return -1 if subtree not balanced; else return height
+  _checkBalance(node) {
+    if (!node) return 0;
+    const leftH = this._checkBalance(node.left);
+    if (leftH === -1) return -1;
+    const rightH = this._checkBalance(node.right);
+    if (rightH === -1) return -1;
+    if (Math.abs(leftH - rightH) > 1) return -1;
+    return Math.max(leftH, rightH) + 1;
+  }
+
+  isBalanced() {
+    return this._checkBalance(this.root) !== -1;
+  }
+
+  // rebalance: get sorted unique array via in-order traversal and rebuild tree
+  rebalance() {
+    const arr = [];
+    this.inOrderForEach((node) => arr.push(node.data));
+    this.root = this.buildTree(arr);
+  }
+
 }
 
