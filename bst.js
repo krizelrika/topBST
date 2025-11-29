@@ -160,5 +160,32 @@ class Tree {
     traverse(this.root);
   }
 
+  // Helper: compute height of a node reference (number of edges in longest path to leaf)
+  _nodeHeight(node) {
+    if (!node) return -1; // height of null is -1 so leaf node has height 0
+    const leftH = this._nodeHeight(node.left);
+    const rightH = this._nodeHeight(node.right);
+    return Math.max(leftH, rightH) + 1;
+  }
+
+  // Height of node containing value: returns number of edges to deepest leaf; null if value not found
+  height(value) {
+    const node = this.find(value);
+    if (!node) return null;
+    return this._nodeHeight(node);
+  }
+
+  // Depth of a node containing value: number of edges from root to the node; null if not found
+  depth(value) {
+    let current = this.root;
+    let depth = 0;
+    while (current) {
+      if (value === current.data) return depth;
+      current = value < current.data ? current.left : current.right;
+      depth++;
+    }
+    return null;
+  }
+
 }
 
