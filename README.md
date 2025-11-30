@@ -31,3 +31,35 @@ Tree Construction
     Sorts, removes duplicates, and recursively builds a balanced BST.
 
 ## Core BST Operations
+| Method              | Description                                          |
+| ------------------- | ---------------------------------------------------- |
+| `insert(value)`     | Inserts value at correct BST position                |
+| `deleteItem(value)` | Removes node and restructures tree                   |
+| `find(value)`       | Returns node if found                                |
+| `height(value)`     | Edges in longest downward path from the node         |
+| `depth(value)`      | Edges from the node to the root                      |
+| `isBalanced()`      | Returns `true` if tree satisfies balance constraints |
+| `rebalance()`       | Rebuilds tree using sorted traversal list            |
+
+## Tree Traversal Methods
+All traversal methods accept a callback, similar to .forEach():
+| Method                  | Order               | Example                  |
+| ----------------------- | ------------------- | ------------------------ |
+| `levelOrderForEach(cb)` | Breadth-first       | Level 0 → 1 → 2          |
+| `inOrderForEach(cb)`    | Left → Root → Right | Produces sorted list     |
+| `preOrderForEach(cb)`   | Root → Left → Right | Used for copying trees   |
+| `postOrderForEach(cb)`  | Left → Right → Root | Children processed first |
+
+
+## 🌲 prettyPrint() Helper
+
+This helper visually prints the tree:
+└── 50
+    ├── 70
+    └── 30
+        ├── 40
+        └── 20
+
+Call it like:
+prettyPrint(tree.root);
+
