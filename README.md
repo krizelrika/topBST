@@ -18,3 +18,16 @@ In this assignment, you will:
     - Checks whether the tree is balanced
     - Rebalances an unbalanced tree
 You’ll also write a driver script (main.js) that tests all the features.
+
+## 🌳 Binary Search Tree Features
+### ✔️ Node Class
+Each node includes:
+- data (number)
+- left child
+- right child
+### ✔️ Tree Class & Methods
+Tree Construction
+- buildTree(array)
+    Sorts, removes duplicates, and recursively builds a balanced BST.
+
+## Core BST Operations
