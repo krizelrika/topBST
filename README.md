@@ -63,3 +63,20 @@ This helper visually prints the tree:
 Call it like:
 prettyPrint(tree.root);
 
+## 📚 Skills Practiced
+This assignment helps you master:
+- Recursion
+- Binary Search Trees
+- Node linking and pointer manipulation
+- Tree balancing logic
+- Traversal algorithms (DFS and BFS)
+- Big-O time complexity thinking
+- Clean, modular JavaScript design
+
+## 🎯 Learning Goals
+- By completing this project, you should understand:
+- How self-balancing BSTs store and retrieve data efficiently
+- Why traversal order matters
+- How recursive algorithms operate on tree structures
+- Why balanced trees preserve O(log n) operations
+- How to reorganize a tree to restore balance
